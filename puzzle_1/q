@@ -1,0 +1,28 @@
+##
+# Host Database
+#
+# localhost is used to configure the loopback interface
+# when the system is booting.  Do not change this entry.
+##
+127.0.0.1	localhost
+255.255.255.255	broadcasthost
+::1             localhost 
+fe80::1%lo0	localhost
+
+# Pracovni
+192.168.20.149  vatlas1 va1
+192.168.20.148  vatlas2 va2
+192.168.20.147  vatlas3 va3
+192.168.20.146  vatlas4 va4
+192.168.20.145  vatlas5 va5
+192.168.20.144	vatlas1_C7 va1c7
+
+192.168.20.126 ch1      chimera1
+192.168.20.124 ch2      chimera2 
+192.168.20.125 ch3      chimera3 
+192.168.20.120 vch3	vchimera3
+192.168.20.119 vch3c7	vchimera3_c7 
+192.168.20.121 vch4     vchimera4 
+192.168.20.122 vch5     vchimera5
+192.168.20.123 vch6     vchimera6 
+192.168.20.223 vch6_C7	vchimera 
