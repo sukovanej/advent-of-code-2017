@@ -1,34 +1,38 @@
 fn main() {
     let mut input = String::new();
     std::io::stdin().read_line(&mut input).expect("err input");
-
-    let mut sum = 0u32;
-    let mut last = 0;
-    let mut d_chars = input.chars().filter(|x| x != '\n');
-    d_chars = 
-
-    for ch in d_chars {
-        if ch == '\n' { continue; }
-
-        let val = ch.to_string().parse::<u32>().unwrap();
-
-        if last == val {
-            sum += last;
-        }
-
-        last = val;
-    }
-
-    let bytes = input.chars().collect::<Vec<char>>();
-    let mut last_index = bytes.len() - 1;
-
-    while !bytes[last_index].is_digit(10) {
-        last_index -= 1;
-    }
-
-    if bytes[0] == bytes[last_index] {
-        sum += bytes[0].to_string().parse::<u32>().unwrap();
-    }
+    let sum = resolve(input);
 
     println!("{}", sum);
+}
+
+fn resolve(input: String) -> u32 {
+    let mut sum = 0u32;
+    let chars = input.chars().filter(|x| *x != '\n').collect::<Vec<char>>();
+    let mut i = chars.len() / 2;
+
+    for a in chars.iter() {
+        let val_a = a.to_string().parse::<u32>().unwrap();
+        let val_b = chars[i].to_string().parse::<u32>().unwrap();
+
+        if val_a == val_b {
+            sum += val_a;
+        }
+
+        i += 1;
+        if i == chars.len() {
+            i = 0;
+        }
+    }
+
+    return sum;
+}
+
+#[test]
+fn test_1() {
+    assert_eq!(resolve("1212".to_string()), 6);
+    assert_eq!(resolve("1221".to_string()), 0);
+    assert_eq!(resolve("123425".to_string()), 4);
+    assert_eq!(resolve("123123".to_string()), 12);
+    assert_eq!(resolve("12131415".to_string()), 4);
 }
